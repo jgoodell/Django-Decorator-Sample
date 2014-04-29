@@ -1,0 +1,101 @@
+
+QUESTION #1
+===========
+
+This URL...
+
+    http://api.sba.gov/geodata/city_county_links_for_state_of/in.json
+
+...fetches county and geolocation data for the state of Indiana in JSON format.
+
+Given the following list of abbreviated state names...
+
+    states = [
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
+    "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+    "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+    "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+    "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+    ]
+
+Set up a loop to iterate through the list above to change the state name
+abbreviation in the URL, then fetch the data for each state, and populate
+a text file with the results. Please provide inline commentary and/or
+docstrings for your code, and set up your answer as a standard Python module
+that can be executed from the command line.  Use any Python library you
+like to make your API call. Make your code as simple and elegant as
+possible.
+
+Also, do one or more of any of the following...
+
+Nice!       Via your code, make the JSON in the resultant text file pretty;
+            you do not need to send the text file; I will run your module
+            locally...so just send your Python module.
+
+Cool!       Via GitHub or Bitbucket, push your code to a new public repo;
+            you only need to send me the link to the repo.
+
+Great!      Use Django's built-in regroup template tag to organize the
+            results via a template. Send me (or push to GitHub) the template
+            you'd use along with the module that makes the API call.
+
+Awesome!    Via AWS or Heroku, deploy your answer as a lightweight Django
+            app; require authentication to enter the site. Push your code
+            to GitHub; send me a URL to the deployed site, as well as a
+            username and password allowing me to login and check it out.
+            Even better if the site has a responsive design.
+
+Excellent!  Do the above--either write a simple stand-alone module OR deploy
+            a Django site which leverages that code--AND write a unittest(s)
+            for the relevant function(s) which make your API call. Copy-paste
+            the results of your unittest and send the results to me as well.
+
+
+
+
+QUESTION #2
+===========
+
+Create the function described in the docstring below--essentially, a
+decorator that takes an argument.  Import it into a module I can run to
+see if the code works.
+
+def minimum_x(x):
+    '''
+    - returns a decorator that can be used to decorate another function
+    - verifies argument of the function it decorates <= the given value
+    - raises a ValueError on failure.
+
+    Example...
+
+    >>> @minimum_x(6)
+    ... def test(arg):
+    ...   print arg
+    ...
+
+    >>> test(6)
+    6
+
+    >>> test(5) # raises ValueError
+    '''
+
+
+
+QUESTION #3
+===========
+
+This is a trick question, but there is a correct answer.  The intended
+audience of the question is actually kindergartners.
+
+Complete the sequence...
+
+0091 = 3
+0113 = 1
+9999 = 4
+8600 = 5
+6712 = 1
+1115 = 0
+8811 = 4
+4334 = 0
+1001 = 2
+6811 =
