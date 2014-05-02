@@ -7,4 +7,5 @@ setup(
     author_email = "jasongoodell@mac.com",
     description = ("A small package that holds some utils for getting some geo data."),
     packages=['geotools'],
+    scripts=['get-state-data'],
     )
