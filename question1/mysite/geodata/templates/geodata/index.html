@@ -1,11 +1,25 @@
 <html>
   <head>
+    <title>State Index</title>
+    <style>
+      div.cell {
+      text-align:center;
+      width:26px;
+      margin:1px 1px 1px 1px;
+      border-style:solid;
+      border-width: 2px;
+      float:left}
+    </style>
   </head>
   <body>
-    {% for state in states %}
-    <div class="cell">
-      {{ state }}
+    <h1>States by Abbreviation with Geo Location Data</h1>
+    <p>Select the link below for the state that you would like to acquire geo location data for.</p>
+    <div class="table">
+      {% for state in states %}
+      <div class="cell">
+	<a href="{{uri}}{{state}}">{{ state }}</a>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </body>
 </html>

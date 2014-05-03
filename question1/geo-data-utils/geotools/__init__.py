@@ -3,4 +3,5 @@ from utils import (STATES,
                    URI,
                    CONNECTION,
                    fetch_data,
+                   fetch_json,
                    )
