@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from geotools import (fetch_data,
+                      STATES,
+                      )
 def index(request):
-    return HttpResponse("Hello, world!")
+    return render(request, 'geodata/index.html', {'states':STATES})

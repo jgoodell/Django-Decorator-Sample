@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'geodata',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,6 +47,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPALTE_DIRS = ('mysite/templates/geodata',)
+
+TEMPLATE_LOADERS = ('django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader')
 
 ROOT_URLCONF = 'mysite.urls'
 
