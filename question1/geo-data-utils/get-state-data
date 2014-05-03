@@ -21,26 +21,23 @@ if __name__ == "__main__":
                  help='Select a state to fetch geolocation data about using the two capital letter abbreviation, e.g. CA for California.')
     opts, args = p.parse_args()
 
-    if opts.state:
+    if opts.state:  # Fetch either one state or all of them.
         if opts.verbose: print("Fetching %s..." % opts.state)
         try:
             fetch_data(URI, opts.state, '%s.json' % opts.state)
         except ValueError:
             print("Error: '%s' is not a valid state abbreviation." % opts.state)
             sys.exit(1)
-        except OSError:
-            print("Error: Check your paths.")
         except Exception, e:
             print("Error: Check your internet connection: %s" % e)
             sys.exit(1)
         sys.exit(0)
     else:
-        print('here')
         for state in STATES:
             if opts.verbose: print("Fetching %s..." % state)
             try:
-                fetch_data(URI, state, '%s.json' % state, file_uri='data')
-            except:
-                print("Error: Check your internet connection.")
+                fetch_data(URI, state, '%s.json' % state)
+            except Exception, e:
+                print("Error: Check your internet connection: %s" % e)
                 sys.exit(1)
         sys.exit(0)

@@ -25,7 +25,7 @@ URI = "/geodata/city_county_links_for_state_of/%s.json"
 CONNECTION = HTTPConnection(HOST, 80)
 
 def fetch_json(uri, state, method="GET"):
-    '''Fetches the provided state data and returns pretty JSON formatted string..
+    '''Fetches the provided state data and returns a pretty formatted JSON string.
 
     Arguments:
     uri:        The URI as a string to the API that serves the geo location data.
@@ -43,12 +43,13 @@ def fetch_json(uri, state, method="GET"):
     response = CONNECTION.getresponse()
     json_data = json.loads(response.read())
     json_data = json.dumps(json_data, sort_keys=True,
-                           indent=4, separators=(',', ': '))
+                           indent=4, separators=(',', ': '))  # Pretty up the JSON
     CONNECTION.close()
     return json_data
 
 def fetch_data(uri, state, file_name, file_uri=None):
     '''Fetches the provided state data and places the data in a specified file.
+    Prints the JSON to file in a pretty format.
 
     Arguments:
     state:      Two capital letter state abbreviation, e.g. CA for California.
@@ -56,7 +57,13 @@ def fetch_data(uri, state, file_name, file_uri=None):
 
     Optional Arguments
     file_uri:   The location to place the file at, default is the current directory.
+
+    Raises:
+    ValueError: If you supply an invalid state abbreviation.
+    gaierror/CannotSendRequest: If there is no network connection.
     '''
+    #FIXME: This code is out of place here, deprecate this method and move the
+    #file stuff to the script. I don't like OS specific stuff here in the module.
     state = state.lower()
     try:
         json_file = open(file_uri + '/' + file_name, 'w')
@@ -65,8 +72,8 @@ def fetch_data(uri, state, file_name, file_uri=None):
     CONNECTION.request("GET", uri % state)
     response = CONNECTION.getresponse()
     json_data = json.loads(response.read())
-    json_file.write(json.dumps(json_data, sort_keys=True,
-                               indent=4, separators=(',', ': ')))
+    json_file.write(json.dumps(json_data, sort_keys=True,   # Pretty up the JSON
+                               indent=4, separators=(',', ': '))) # write to file
     json_file.close()
     CONNECTION.close()
     
