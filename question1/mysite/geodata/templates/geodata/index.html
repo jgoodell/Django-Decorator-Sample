@@ -17,7 +17,7 @@
     <div class="table">
       {% for state in states %}
       <div class="cell">
-	<a href="{{uri}}{{state}}">{{ state }}</a>
+	<a href="{{uri}}{{state.lower}}">{{ state }}</a>
       </div>
       {% endfor %}
     </div>
