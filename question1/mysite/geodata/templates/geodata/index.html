@@ -9,6 +9,13 @@
       border-style:solid;
       border-width: 2px;
       float:left}
+      div.all_cell {
+      text-align:center;
+      width:72px;
+      margin:1px 1px 1px 1px;
+      border-style:solid;
+      border-width: 2px;
+      float:left}
     </style>
   </head>
   <body>
@@ -17,9 +24,12 @@
     <div class="table">
       {% for state in states %}
       <div class="cell">
-	<a href="{{uri}}{{state.lower}}">{{ state }}</a>
+	<a href="{% url 'data' state.lower %}">{{ state }}</a>
       </div>
       {% endfor %}
+      <div class="all_cell">
+	<a href="{% url 'all_data' %}">All States</a>
+      </div>
     </div>
   </body>
 </html>

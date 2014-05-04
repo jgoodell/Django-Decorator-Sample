@@ -1,3 +1,5 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -19,8 +21,21 @@ def index(request):
     request:  HttpRequest instance.
     '''
     if request.method == 'GET':
-        return render(request, 'geodata/index.html', {'states':STATES, 'uri':'data/'})
+        return render(request, 'geodata/index.html', {'states':STATES})
     else:  # Only accept requests via the GET method.
+        response = HttpResponse(ERROR_405)
+        response.status_code = 405
+        return response
+
+def all_data(request):
+    '''View that gets the geo locationdata for all states.
+
+    Arguments:
+    request:  A HttpRequest instance.
+    '''
+    if request.method == 'GET':
+        return HttpResponse('{message:"Hello world!"}',content_type="application/json")        
+    else:
         response = HttpResponse(ERROR_405)
         response.status_code = 405
         return response
@@ -44,7 +59,6 @@ def data(request, state):
             response = HttpResponse(ERROR_500 + ": " + str(type(e)) + " " + str(e))
             response.status_code = 500
             return response
-        print(data)
         return HttpResponse(data,content_type="application/json")
     else:  # Only accept request via the GET method.
         response = HttpResponse(ERROR_405)
