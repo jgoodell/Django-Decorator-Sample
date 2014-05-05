@@ -24,13 +24,24 @@ def minimum_x(dec_arg):
     function does not match the value.
 
     Arguments:
+    dec_arg,  The integer that represents the minimum allowed value.
     '''
     def f1(f,dec_arg=dec_arg):
-        '''f1'''
+        '''The function called and passed the function being decorated.
+
+        Arguments:
+        f,        The function being decorated.
+        dec_args, The minimum allowed value passed to the decorator..
+        '''
         def f2(func_arg,dec_arg=dec_arg, func=f):
-            '''f2'''
+            '''The returned.
+            Arguments:
+            func_arg,  The argument passed to the function being decorated.
+            dec_arg,   The minimum allowed value passed to the decorator.
+            func,      The function being decorated.
+            '''
             if func_arg >= dec_arg:
-                func(func_arg)
+                return func(func_arg)
             else:
                 raise ValueError('%s is less than %s' % (func_arg, dec_arg))
         return f2
