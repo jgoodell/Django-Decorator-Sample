@@ -5,10 +5,12 @@ from django.core.urlresolvers import reverse
 from geodata import views
 
 class MockRequest(object):
-    def __init__(self,method='GET', content_type='text/html'):
+    def __init__(self,method='GET', content_type='text/html', http_accept=None):
         self.method = method
         self.environ = dict()
         self.environ['CONTENT_TYPE'] = content_type
+        if accept:
+            self.environ['HTTP_ACCEPT'] = http_accept
 
 class IndexTestCase(TestCase):
     def setUp(self):
@@ -51,7 +53,7 @@ class DataTestCase(TestCase):
 
     def test_get_200_json(self):
         '''Simple test of a good URI.'''
-        response = views.data(MockRequest(content_type="application/json"),'ct')
+        response = views.data(MockRequest(http_accept="application/json"),'ct')
         self.assertEqual(response.status_code,200)
         try:
             import json
@@ -61,7 +63,7 @@ class DataTestCase(TestCase):
 
     def test_get_400_json(self):
         '''Simple test of a bad URI.'''
-        response = views.data(MockRequest(content_type="application/json"),'bogus')
+        response = views.data(MockRequest(http_accept="application/json"),'bogus')
         self.assertEqual(response.status_code,400)
 
     def test_get_400(self):
@@ -100,7 +102,7 @@ class AllDataTestCase(TestCase):
 
     def test_get_200_json(self):
         '''Simple test of a good URI.'''
-        response = views.all_data(MockRequest(content_type="application/json"))
+        response = views.all_data(MockRequest(http_accept="application/json"))
         self.assertEqual(response.status_code,200)
         try:
             import json

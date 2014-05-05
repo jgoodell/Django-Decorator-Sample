@@ -20,6 +20,7 @@ def index(request):
     Arguments:
     request:  HttpRequest instance.
     '''
+    import pdb; pdb.set_trace()
     if request.method == 'GET':
         return render(request, 'geodata/index.html', {'states':STATES})
     else:  # Only accept requests via the GET method.
