@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>State Index</title>
+    <style>
+      div.outter {
+      text-align:left;
+      width:420px;
+      margin:1px 1px 1px 1px;
+      border-style:solid;
+      border-width: 2px;
+      }
+      div.all_cell {
+      text-align:center;
+      width:72px;
+      margin:1px 1px 1px 1px;
+      border-style:solid;
+      border-width: 2px;
+      float:left}
+    </style>
+  </head>
+  <body>
+    <div class="table">
+      {% regroup state by county_name as county_list %}
+      {% for county in county_list %}
+      <div class="outter">
+	{% for each in county.list %}
+	<div class="cell">
+	  <b>County Name: {{ each.full_county_name }}, {{ each.state_name }} ({{ each.state_abbreviation }})</b>
+	</div>
+	<div class="cell">
+	  <a href="{{ each.url }}">{{ each.url }}</a>
+	</div>
+	<div class="cell">
+	  Description: {{ each.description }}
+	</div>
+	<div class="cell">
+	  Location; Lat. {{ each.primary_latitude }} Long. {{ each.primary_longitude }}
+	</div>
+	<div class="cell">
+	  FIPS Class: {{ each.fips_class }}
+	</div>
+	<div class="cell">
+	  Feature ID:{{ each.feature_id }} Feature Class: {{ each.feat_class }}
+	</div>
+	<div class="cell">
+	  Link Title: {{ each.link_title }}
+	</div>
+	<div class="cell">
+	  FIPS County CD: {{ each.fips_county_cd }}
+	</div>
+	{% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
