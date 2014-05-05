@@ -20,7 +20,6 @@ def index(request):
     Arguments:
     request:  HttpRequest instance.
     '''
-    import pdb; pdb.set_trace()
     if request.method == 'GET':
         return render(request, 'geodata/index.html', {'states':STATES})
     else:  # Only accept requests via the GET method.
@@ -35,7 +34,7 @@ def all_data(request):
     request:  A HttpRequest instance.
     '''
     if request.method == 'GET':
-        if 'json' in request.environ['CONTENT_TYPE']:
+        if 'json' in request.environ['HTTP_ACCEPT']:
             try:
                 all_data = dict()
             except ValueError:  # A value error is raised if the URI is invalid.
@@ -80,7 +79,7 @@ def data(request, state):
     state:    String two letter state abbreviation.
     '''
     if request.method == 'GET':
-        if 'json' in request.environ['CONTENT_TYPE']:
+        if 'json' in request.environ['HTTP_ACCEPT']:
             try:
                 data = fetch_json(URI,state)
             except ValueError:  # A value error is raised if the URI is invalid.

@@ -9,7 +9,7 @@ class MockRequest(object):
         self.method = method
         self.environ = dict()
         self.environ['CONTENT_TYPE'] = content_type
-        if accept:
+        if http_accept:
             self.environ['HTTP_ACCEPT'] = http_accept
 
 class IndexTestCase(TestCase):
