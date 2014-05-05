@@ -63,8 +63,8 @@ and go to
 
 where you will see the index of the application where you can select each states
 county data or all the county data for all states. The data will be displayed as
-HTML, or if you change your Content-Type header value to 'application/json' you
-will see the JSON data pretty printed in the browser.
+HTML, or if you augment your Accept header value to include 'application/json' as
+an accepted media type you will see the JSON data pretty printed in the browser.
 
 QUESTOIN #2
 -----------
