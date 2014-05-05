@@ -1,12 +1,91 @@
+Intro
+-----
 This repository contains the code written for the Harrison College code test
 provided on April 29th 2014. Co-located with this README is the file provided
 by Harrison College with the code test instructions.
 
 To use the code in this repository I suggest using virtualenv with virtualenvwrapper
-to create isolated environments for each of the code bases for the three questions.
+to create isolated environments for each of the code bases for the two questions.
 That way if there are any conflicting dependencies with your current environment
 this code won't get in the way. For each of the questions code bases there is a
-file 'requirements.pip' with specific requirements for each code base, and all
-of these can be installed from the file using.
+file 'requirements.pip' with specific requirements (if there are any)  for each
+code base, and all of these can be installed from the file using.
 
    pip install -r requirements.pip
+
+QUESTION #1
+-----------
+This project has two code bases, the module geotools which is located in 
+
+     question1/geo-data-utils
+
+You will need to install this module before you can run the django application
+located in 
+
+     question1/mysite
+
+To install the geotools module change directories to
+
+     question1/geo-data-utils
+
+and execute
+
+     python setup.py install
+
+you may need to run this command as root if you are not using a virtualenv. This
+will install the geotools module and a script 'get-state-data'. Running
+
+     get-state-data -h
+
+will give you help text. This script will either download all of the county data by
+state into individual files e.g. ct.json, or just a single state. The data will be
+pretty printed in the files.
+
+Once the geotools module has been installed you can use the module in the shell
+
+>>> import geotools
+import geotools
+>>> geotools.fetch_json(geotools.URI,'CT')
+{...
+
+or you can get the django app running. To run the django app change directories
+to
+
+     questions1/mysite
+
+and execute
+
+     python manage.py runserver 8080
+
+and go to 
+
+     localhost:8080
+
+where you will see the index of the application where you can select each states
+county data or all the county data for all states. The data will be displayed as
+HTML, or if you change your Content-Type header value to 'application/json' you
+will see the JSON data pretty printed in the browser.
+
+QUESTOIN #2
+-----------
+
+The code for the second question is a simple python module. You can execute the module
+as a script 
+
+     python module
+
+where the code
+
+     if __name__ == "__main__":
+         test(6)
+         test(5)
+
+will execute and you will see the decorator allow the first instance to print. While
+the second instance will raise a ValueError. You can also start up the python shell
+and import the decorator for your own use.
+
+>>> from minimum import minimum_x
+from minimum import minimum_x
+>>> minimum_x(8)
+... def func(number):
+...
